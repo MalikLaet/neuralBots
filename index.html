@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b10" />
+  <title>NeuralBot — Chatbots e Agentes de IA para Empresas | Automação Inteligente</title>
+  <meta name="description" content="Chatbots e agentes de IA sob medida para WhatsApp, Instagram e site. Automatize atendimento, vendas e suporte 24h com retorno real em até 30 dias." />
+  <meta name="keywords" content="chatbot, agente de IA, automação WhatsApp, atendimento automatizado, inteligência artificial, chatbot para vendas, IA para empresas, automação comercial" />
+  <meta name="author" content="NeuralBot" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://neuralbot.com.br/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="NeuralBot — Chatbots e Agentes de IA para Empresas" />
+  <meta property="og:description" content="Automatize atendimento, vendas e suporte com chatbots de IA que trabalham 24h por dia. Entrega em 7 dias." />
+  <meta property="og:url" content="https://neuralbot.com.br/" />
+  <meta property="og:site_name" content="NeuralBot" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NeuralBot — Chatbots e Agentes de IA" />
+  <meta name="twitter:description" content="Chatbots de IA que vendem, atendem e qualificam leads 24h por dia." />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "NeuralBot",
+    "description": "Desenvolvimento de chatbots e agentes de IA personalizados para empresas.",
+    "url": "https://neuralbot.com.br",
+    "telephone": "+5511999038780",
+    "email": "isklikma@gmail.com",
+    "areaServed": "BR",
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127"
+    }
+  }
+  </script>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- React + Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Lucide -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080b10;
+      color: #eef2f7;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    strong { font-weight: 600; }
+    input, textarea, select { font-family: 'Inter', sans-serif; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #080b10; }
+    ::-webkit-scrollbar-thumb { background: #1e2d3d; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00d4aa; }
+
+    ::selection { background: rgba(0,212,170,.28); color: #fff; }
+
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-14px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(22px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes pulse    { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.5);opacity:.5;} }
+    @keyframes pulseRing{ 0%{transform:scale(.8);opacity:.6;} 100%{transform:scale(2.2);opacity:0;} }
+    @keyframes blink    { 0%,100%{opacity:1;} 50%{opacity:0;} }
+    @keyframes float    { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+    @keyframes spin     { to { transform: rotate(360deg); } }
+    @keyframes marquee  { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+    .afd { animation: fadeDown .7s ease both; }
+    .afu { animation: fadeUp .7s ease both; }
+    .d1 { animation-delay:.1s; } .d2 { animation-delay:.2s; }
+    .d3 { animation-delay:.3s; } .d4 { animation-delay:.4s; }
+
+    @media(max-width:768px) {
+      .desk-nav { display:none !important; }
+      .mob-toggle { display:flex !important; }
+      .hide-mob { display:none !important; }
+    }
+    @media(max-width:480px) {
+      .stats-row { flex-direction:column !important; gap:20px !important; }
+      .stat-sep  { border-right:none !important; border-bottom:1px solid rgba(255,255,255,.07) !important; padding-right:0 !important; margin-right:0 !important; padding-bottom:20px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef, useMemo } = React;
+
+    /* ─── CONFIGURAÇÃO ────────────────────────────── */
+    const CFG = {
+      whatsapp: "5511999038780",
+      whatsappDisplay: "(11) 99903-8780",
+      message:  "Olá! Vim pelo site e quero saber mais sobre os chatbots e agentes de IA da NeuralBot.",
+      email:    "isklikma@gmail.com",
+      name:     "NeuralBot",
+      city:     "São Paulo, SP",
+      hours:    "Seg a Sex — 9h às 19h",
+    };
+    const wpp = (msg) => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(msg || CFG.message)}`;
+
+    /* ─── HOOK: reveal ao scroll ──────────────────── */
+    function useReveal(thresh = 0.1) {
+      const ref = useRef(null);
+      const [vis, setVis] = useState(false);
+      useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const obs = new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) { setVis(true); obs.unobserve(el); }
+        }, { threshold: thresh });
+        obs.observe(el);
+        return () => obs.disconnect();
+      }, []);
+      return [ref, vis];
+    }
+
+    /* ─── ÍCONE LUCIDE (otimizado) ────────────────── */
+    function Icon({ name, size = 18, color, strokeWidth = 2 }) {
+      const ref = useRef(null);
+      useEffect(() => {
+        if (!ref.current) return;
+        ref.current.innerHTML = `<i data-lucide="${name}" style="width:${size}px;height:${size}px;${color?`color:${color};`:''}stroke-width:${strokeWidth}"></i>`;
+        if (window.lucide) window.lucide.createIcons({ attrs: { 'stroke-width': strokeWidth } });
+      }, [name, size, color, strokeWidth]);
+      return <span ref={ref} style={{ display:'inline-flex', alignItems:'center', flexShrink:0, lineHeight:0 }} />;
+    }
+
+    /* ─── COMPONENTES UI ──────────────────────────── */
+    function SLabel({ icon, children }) {
+      return (
+        <span style={{
+          display:'inline-flex', alignItems:'center', gap:7,
+          fontSize:'.72rem', fontWeight:700, letterSpacing:'.12em', textTransform:'uppercase',
+          color:'#00d4aa', background:'rgba(0,212,170,.1)',
+          border:'1px solid rgba(0,212,170,.28)', padding:'5px 13px',
+          borderRadius:100, marginBottom:18,
+        }}>
+          <Icon name={icon} size={11} color="#00d4aa" /> {children}
+        </span>
+      );
+    }
+
+    function STitle({ children, center }) {
+      return (
+        <h2 style={{
+          fontFamily:"'Syne',sans-serif",
+          fontSize:'clamp(1.8rem,3.8vw,2.65rem)',
+          fontWeight:800, lineHeight:1.13, marginBottom:13,
+          textAlign: center ? 'center' : 'left',
+          letterSpacing:'-.01em',
+        }}>
+          {children}
+        </h2>
+      );
+    }
+
+    const Hi = ({ children }) => <span style={{
+      background:'linear-gradient(135deg,#00d4aa,#3b82f6)',
+      WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text',
+    }}>{children}</span>;
+
+    function BtnPri({ href, onClick, children, full }) {
+      const [h, sH] = useState(false);
+      const s = {
+        display:'inline-flex', alignItems:'center', justifyContent:'center', gap:9,
+        background:'linear-gradient(135deg,#00d4aa,#3b82f6)',
+        color:'#040810', fontFamily:"'Syne',sans-serif",
+        fontWeight:700, fontSize:'.9rem', padding:'13px 24px',
+        borderRadius:15, border:'none', cursor:'pointer',
+        transition:'all .25s', textDecoration:'none', whiteSpace:'nowrap',
+        width: full ? '100%' : 'auto',
+        transform: h ? 'translateY(-2px)' : 'none',
+        boxShadow: h ? '0 10px 32px rgba(0,212,170,.35)' : '0 4px 14px rgba(0,212,170,.12)',
+      };
+      if (href) return <a href={href} target="_blank" rel="noopener noreferrer" style={s} onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}>{children}</a>;
+      return <button onClick={onClick} style={s} onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}>{children}</button>;
+    }
+
+    function BtnOut({ href, children }) {
+      const [h, sH] = useState(false);
+      return (
+        <a href={href} style={{
+          display:'inline-flex', alignItems:'center', gap:7,
+          background: h ? 'rgba(0,212,170,.08)' : 'transparent',
+          color: h ? '#00d4aa' : '#eef2f7',
+          fontFamily:"'Syne',sans-serif", fontWeight:600, fontSize:'.9rem',
+          padding:'12px 22px', borderRadius:15,
+          border: h ? '1px solid rgba(0,212,170,.4)' : '1px solid rgba(255,255,255,.1)',
+          cursor:'pointer', transition:'all .25s', textDecoration:'none', whiteSpace:'nowrap',
+        }} onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}>
+          {children}
+        </a>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ NAVBAR ══════════════════════════════════════════════ */
+    function Navbar() {
+      const [scrolled, setScrolled] = useState(false);
+      const [open, setOpen] = useState(false);
+
+      useEffect(() => {
+        const fn = () => setScrolled(window.scrollY > 40);
+        window.addEventListener('scroll', fn, { passive:true });
+        return () => window.removeEventListener('scroll', fn);
+      }, []);
+
+      useEffect(() => {
+        if (!open) return;
+        const fn = (e) => { if (!e.target.closest('#navbar-root')) setOpen(false); };
+        document.addEventListener('mousedown', fn);
+        return () => document.removeEventListener('mousedown', fn);
+      }, [open]);
+
+      const links = [
+        { l:'Sobre',        h:'#sobre'        },
+        { l:'Serviços',     h:'#servicos'     },
+        { l:'Como Funciona',h:'#processo'     },
+        { l:'Diferenciais', h:'#diferenciais' },
+        { l:'FAQ',          h:'#faq'          },
+      ];
+
+      return (
+        <header id="navbar-root" style={{
+          position:'fixed', top:0, left:0, right:0, zIndex:300,
+          background: (scrolled || open) ? 'rgba(8,11,16,.97)' : 'transparent',
+          backdropFilter: (scrolled || open) ? 'blur(20px)' : 'none',
+          WebkitBackdropFilter: (scrolled || open) ? 'blur(20px)' : 'none',
+          borderBottom: (scrolled || open) ? '1px solid rgba(255,255,255,.07)' : 'none',
+          transition:'background .3s, border .3s',
+        }}>
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px' }}>
+            <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', height:64 }}>
+              <a href="#" style={{
+                fontFamily:"'Syne',sans-serif", fontSize:'1.2rem', fontWeight:800,
+                display:'flex', alignItems:'center', gap:9,
+              }}>
+                <span style={{
+                  width:34, height:34,
+                  background:'linear-gradient(135deg,#00d4aa,#3b82f6)',
+                  borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center',
+                  boxShadow:'0 4px 14px rgba(0,212,170,.35)',
+                }}>
+                  <Icon name="bot" size={17} color="#040810" />
+                </span>
+                {CFG.name}
+              </a>
+
+              <nav className="desk-nav" style={{ display:'flex', alignItems:'center', gap:2 }}>
+                {links.map(l => <NavLink key={l.h} href={l.h}>{l.l}</NavLink>)}
+                <a href={wpp()} target="_blank" rel="noopener noreferrer"
+                   style={{
+                     marginLeft:10, display:'inline-flex', alignItems:'center', gap:7,
+                     background:'#00d4aa', color:'#040810',
+                     fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:'.82rem',
+                     padding:'9px 18px', borderRadius:12,
+                     transition:'all .2s', whiteSpace:'nowrap',
+                     boxShadow:'0 4px 14px rgba(0,212,170,.2)',
+                   }}
+                   onMouseEnter={e=>{ e.currentTarget.style.background='#00bfa0'; e.currentTarget.style.transform='translateY(-1px)'; }}
+                   onMouseLeave={e=>{ e.currentTarget.style.background='#00d4aa'; e.currentTarget.style.transform='none'; }}>
+                  <Icon name="message-circle" size={14} color="#040810" />
+                  Orçamento grátis
+                </a>
+              </nav>
+
+              <button className="mob-toggle"
+                      onClick={() => setOpen(v => !v)}
+                      aria-label="Abrir menu"
+                      style={{
+                        display:'none',
+                        background:'rgba(255,255,255,.05)',
+                        border:'1px solid rgba(255,255,255,.1)',
+                        borderRadius:9, padding:8, cursor:'pointer', color:'#eef2f7',
+                        alignItems:'center', justifyContent:'center',
+                      }}>
+                <Icon name={open ? 'x' : 'menu'} size={20} />
+              </button>
+            </div>
+
+            {open && (
+              <div style={{ borderTop:'1px solid rgba(255,255,255,.08)', paddingBottom:16 }}>
+                {links.map(l => (
+                  <a key={l.h} href={l.h}
+                     onClick={() => setOpen(false)}
+                     style={{
+                       display:'block', padding:'11px 4px',
+                       fontSize:'.95rem', fontWeight:500,
+                       color:'#c8d0db',
+                       borderBottom:'1px solid rgba(255,255,255,.04)',
+                       transition:'color .2s, padding-left .2s',
+                     }}
+                     onMouseEnter={e=>{ e.currentTarget.style.color='#00d4aa'; e.currentTarget.style.paddingLeft='12px'; }}
+                     onMouseLeave={e=>{ e.currentTarget.style.color='#c8d0db'; e.currentTarget.style.paddingLeft='4px'; }}>
+                    {l.l}
+                  </a>
+                ))}
+                <a href={wpp()} target="_blank" rel="noopener noreferrer"
+                   onClick={() => setOpen(false)}
+                   style={{
+                     display:'flex', alignItems:'center', justifyContent:'center', gap:9,
+                     marginTop:14, background:'#00d4aa', color:'#040810',
+                     fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:'.95rem',
+                     padding:'13px', borderRadius:13,
+                   }}>
+                  <Icon name="message-circle" size={16} color="#040810" />
+                  Falar no WhatsApp
+                </a>
+              </div>
+            )}
+          </div>
+        </header>
+      );
+    }
+
+    function NavLink({ href, children }) {
+      const [h, sH] = useState(false);
+      return (
+        <a href={href}
+           style={{
+             fontSize:'.86rem', fontWeight:500, padding:'7px 13px', borderRadius:8,
+             color: h ? '#eef2f7' : '#8a96a8',
+             background: h ? 'rgba(255,255,255,.06)' : 'transparent',
+             transition:'all .2s',
+           }}
+           onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}>
+          {children}
+        </a>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ HERO ══════════════════════════════════════════════ */
+    function HeroChat() {
+      const msgs = [
+        { from:'user', text:'Oi! Qual o prazo de entrega?' },
+        { from:'bot',  text:'Olá! 😊 Para São Paulo, entregamos em 2 dias úteis. Quer finalizar seu pedido?' },
+        { from:'user', text:'Sim! Pode me enviar o link de pagamento?' },
+        { from:'bot',  text:'Claro! 🎉 Aqui está seu link: pay.loja.com/xyz\n\nPosso ajudar com mais alguma coisa?' },
+      ];
+      return (
+        <div style={{
+          background:'#111820', border:'1px solid rgba(255,255,255,.09)',
+          borderRadius:22, overflow:'hidden',
+          boxShadow:'0 24px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(0,212,170,.08)',
+          animation:'float 6s ease-in-out infinite',
+          maxWidth:360, width:'100%',
+        }}>
+          {/* Header */}
+          <div style={{
+            background:'linear-gradient(135deg,rgba(0,212,170,.12),rgba(59,130,246,.08))',
+            borderBottom:'1px solid rgba(255,255,255,.07)',
+            padding:'14px 18px', display:'flex', alignItems:'center', gap:12,
+          }}>
+            <div style={{ position:'relative' }}>
+              <div style={{
+                width:40, height:40, borderRadius:'50%',
+                background:'linear-gradient(135deg,#00d4aa,#3b82f6)',
+                display:'flex', alignItems:'center', justifyContent:'center',
+                fontFamily:"'Syne',sans-serif", fontWeight:800, fontSize:'.85rem', color:'#040810',
+              }}>NB</div>
+              <span style={{
+                position:'absolute', bottom:1, right:1,
+                width:10, height:10, background:'#22c55e',
+                borderRadius:'50%', border:'2px solid #111820',
+              }} />
+            </div>
+            <div>
+              <div style={{ fontWeight:600, fontSize:'.88rem' }}>NeuralBot Assistant</div>
+              <div style={{ fontSize:'.72rem', color:'#00d4aa' }}>● Online agora</div>
+            </div>
+          </div>
+          {/* Messages */}
+          <div style={{ padding:'16px 14px', display:'flex', flexDirection:'column', gap:10, background:'#0d1419' }}>
+            {msgs.map((m,i)=>(
+              <div key={i} style={{ display:'flex', justifyContent: m.from==='user' ? 'flex-end' : 'flex-start' }}>
+                <div style={{
+                  maxWidth:'78%', padding:'9px 13px', borderRadius: m.from==='user' ? '14px 14px 4px 14px' : '14px 14px 14px 4px',
+                  background: m.from==='user' ? 'linear-gradient(135deg,#00d4aa,#3b82f6)' : '#1a2535',
+                  color: m.from==='user' ? '#040810' : '#dde4ee',
+                  fontSize:'.8rem', lineHeight:1.55, fontWeight: m.from==='user' ? 500 : 400,
+                  whiteSpace:'pre-wrap',
+                }}>
+                  {m.text}
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Input */}
+          <div style={{
+            padding:'12px 14px', borderTop:'1px solid rgba(255,255,255,.06)',
+            display:'flex', alignItems:'center', gap:8, background:'#111820',
+          }}>
+            <div style={{
+              flex:1, background:'#0d1419', border:'1px solid rgba(255,255,255,.08)',
+              borderRadius:10, padding:'8px 12px', fontSize:'.78rem', color:'#4a5568',
+            }}>Digite uma mensagem…</div>
+            <div style={{
+              width:32, height:32, borderRadius:9,
+              background:'linear-gradient(135deg,#00d4aa,#3b82f6)',
+              display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0,
+            }}>
+              <Icon name="send" size={13} color="#040810" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function Hero() {
+      return (
+        <section id="inicio" style={{
+          minHeight:'100vh', display:'flex', alignItems:'center',
+          padding:'120px 0 80px', position:'relative', overflow:'hidden',
+        }}>
+          {/* Grid background */}
+          <div style={{
+            position:'absolute', inset:0,
+            backgroundImage:'linear-gradient(rgba(0,212,170,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,170,.035) 1px,transparent 1px)',
+            backgroundSize:'60px 60px',
+            maskImage:'radial-gradient(ellipse 80% 60% at 50% 40%,black 10%,transparent 100%)',
+            WebkitMaskImage:'radial-gradient(ellipse 80% 60% at 50% 40%,black 10%,transparent 100%)',
+          }} />
+          <div style={{ position:'absolute', width:800, height:800, background:'radial-gradient(circle,rgba(0,212,170,.07) 0%,transparent 65%)', top:-200, left:'30%', transform:'translateX(-50%)', pointerEvents:'none' }} />
+          <div style={{ position:'absolute', width:500, height:500, background:'radial-gradient(circle,rgba(59,130,246,.06) 0%,transparent 65%)', bottom:-100, right:-100, pointerEvents:'none' }} />
+
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px', position:'relative', zIndex:1, width:'100%' }}>
+            <div style={{ display:'grid', gridTemplateColumns:'1fr auto', gap:48, alignItems:'center' }} className="hero-grid">
+
+              {/* Left: text */}
+              <div>
+                <div className="afd" style={{
+                  display:'inline-flex', alignItems:'center', gap:8,
+                  background:'rgba(0,212,170,.08)', border:'1px solid rgba(0,212,170,.25)',
+                  color:'#00d4aa', fontSize:'.74rem', fontWeight:600,
+                  padding:'6px 14px', borderRadius:100, marginBottom:24,
+                  letterSpacing:'.04em',
+                }}>
+                  <span style={{ width:6, height:6, background:'#00d4aa', borderRadius:'50%', animation:'pulse 2s ease-in-out infinite' }} />
+                  +200 empresas automatizadas em 2025
+                </div>
+
+                <h1 className="afu d1" style={{
+                  fontFamily:"'Syne',sans-serif",
+                  fontSize:'clamp(2.2rem,5.5vw,4rem)',
+                  fontWeight:800, lineHeight:1.08, letterSpacing:'-.025em',
+                  marginBottom:22, maxWidth:640,
+                }}>
+                  Chatbots de IA que <Hi>vendem, atendem</Hi> e qualificam leads 24h por dia
+                </h1>
+
+                <p className="afu d2" style={{
+                  fontSize:'1.05rem', color:'#8a96a8', lineHeight:1.8, maxWidth:520, marginBottom:36,
+                  fontWeight:400,
+                }}>
+                  Automatize WhatsApp, Instagram e site com agentes de IA sob medida.
+                  Entrega em até <strong>7 dias</strong> — sem contratos longos.
+                </p>
+
+                <div className="afu d3" style={{ display:'flex', alignItems:'center', gap:12, flexWrap:'wrap', marginBottom:28 }}>
+                  <BtnPri href={wpp()}>
+                    <Icon name="message-circle" size={17} color="#040810" />
+                    Orçamento gratuito no WhatsApp
+                  </BtnPri>
+                  <BtnOut href="#servicos">
+                    Ver serviços <Icon name="arrow-down" size={14} color="#00d4aa" />
+                  </BtnOut>
+                </div>
+
+                <div className="afu d4" style={{ display:'flex', alignItems:'center', gap:16, flexWrap:'wrap', fontSize:'.82rem', color:'#8a96a8', marginBottom:44 }}>
+                  {[['shield-check','LGPD compliant'],['zap','Entrega em 7 dias'],['refresh-cw','30 dias de suporte']].map(([ic,txt],i)=>(
+                    <span key={i} style={{ display:'inline-flex', alignItems:'center', gap:6 }}>
+                      <Icon name={ic} size={14} color="#00d4aa" /> {txt}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="afu d4 stats-row" style={{
+                  paddingTop:32, borderTop:'1px solid rgba(255,255,255,.07)',
+                  display:'flex', alignItems:'flex-start', gap:0, flexWrap:'wrap',
+                }}>
+                  {[
+                    { v:'+200',  l:'Projetos entregues',      accent:false },
+                    { v:'98%',   l:'Satisfação dos clientes', accent:true  },
+                    { v:'<1min', l:'Tempo de resposta',        accent:true  },
+                    { v:'24/7',  l:'Disponibilidade',          accent:false },
+                  ].map((s,i,arr)=>(
+                    <div key={i} className={i<arr.length-1?'stat-sep':''}
+                         style={{ flexShrink:0, paddingRight:i<arr.length-1?36:0, marginRight:i<arr.length-1?36:0, borderRight:i<arr.length-1?'1px solid rgba(255,255,255,.07)':'none' }}>
+                      <div style={{ fontFamily:"'Syne',sans-serif", fontSize:'1.9rem', fontWeight:800, lineHeight:1.1, letterSpacing:'-.02em', color:s.accent?'#00d4aa':'#eef2f7' }}>
+                        {s.v}
+                      </div>
+                      <div style={{ fontSize:'.78rem', color:'#4a5568', marginTop:4, fontWeight:400 }}>{s.l}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: chat visual */}
+              <div className="afu d2 hide-mob" style={{ flexShrink:0 }}>
+                <HeroChat />
+              </div>
+
+            </div>
+          </div>
+
+          <style>{`
+            @media(max-width:900px){ .hero-grid{ grid-template-columns: 1fr !important; } }
+          `}</style>
+        </section>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ INTEGRAÇÕES ══════════════════════════════════════════════ */
+    function Integrations() {
+      const items = [
+        { icon:'message-circle', name:'WhatsApp',   col:'#25D366' },
+        { icon:'instagram',      name:'Instagram',  col:'#e1306c' },
+        { icon:'send',           name:'Telegram',   col:'#0088cc' },
+        { icon:'message-square', name:'Messenger',  col:'#0084ff' },
+        { icon:'globe',          name:'Site',       col:'#8a96a8' },
+        { icon:'mail',           name:'E-mail',     col:'#8a96a8' },
+        { icon:'database',       name:'CRM',        col:'#a855f7' },
+        { icon:'credit-card',    name:'Pagamentos', col:'#3b82f6' },
+        { icon:'calendar',       name:'Calendário', col:'#fb923c' },
+        { icon:'bar-chart-2',    name:'Analytics',  col:'#06b6d4' },
+      ];
+      return (
+        <section style={{ padding:'36px 0', background:'#080b10', borderTop:'1px solid rgba(255,255,255,.05)', borderBottom:'1px solid rgba(255,255,255,.05)' }}>
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px' }}>
+            <p style={{ textAlign:'center', fontSize:'.72rem', fontWeight:600, letterSpacing:'.16em', textTransform:'uppercase', color:'#4a5568', marginBottom:20 }}>
+              Conectamos com as plataformas que você já usa
+            </p>
+            <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', justifyContent:'center', gap:10 }}>
+              {items.map((it,i)=>(
+                <div key={i} style={{
+                  display:'inline-flex', alignItems:'center', gap:7,
+                  background:'#111820', border:'1px solid rgba(255,255,255,.07)',
+                  borderRadius:100, padding:'7px 14px',
+                  color:'#8a96a8', fontSize:'.82rem', fontWeight:500,
+                  transition:'all .2s',
+                }}
+                onMouseEnter={e=>{ e.currentTarget.style.borderColor=`${it.col}55`; e.currentTarget.style.color='#eef2f7'; }}
+                onMouseLeave={e=>{ e.currentTarget.style.borderColor='rgba(255,255,255,.07)'; e.currentTarget.style.color='#8a96a8'; }}>
+                  <Icon name={it.icon} size={14} color={it.col} /> {it.name}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ SOBRE ══════════════════════════════════════════════ */
+    function About() {
+      const [r1, v1] = useReveal();
+      const [r2, v2] = useReveal();
+      const benefits = [
+        { icon:'clock',       title:'Atendimento 24/7',           desc:'Seu cliente é respondido em segundos, em qualquer horário e dia da semana.' },
+        { icon:'trending-up', title:'Mais vendas, menos esforço', desc:'O bot qualifica leads, apresenta produtos e envia o link de pagamento automaticamente.' },
+        { icon:'piggy-bank',  title:'Economia real de até 70%',   desc:'Reduza custos com SAC sem perder qualidade no atendimento ao cliente.' },
+        { icon:'database',    title:'Integrado aos seus sistemas',desc:'Conectamos com CRM, ERP, planilhas e qualquer API que sua empresa já utiliza.' },
+      ];
+      return (
+        <section id="sobre" style={{ padding:'100px 0', background:'#0d1117' }}>
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px' }}>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:60, alignItems:'center' }}>
+
+              <div ref={r1} style={{ opacity:v1?1:0, transform:v1?'none':'translateY(28px)', transition:'all .7s ease' }}>
+                <div style={{
+                  background:'#111820', border:'1px solid rgba(255,255,255,.07)',
+                  borderRadius:20, overflow:'hidden', boxShadow:'0 8px 40px rgba(0,0,0,.5)',
+                  animation: v1 ? 'float 6s ease-in-out infinite' : 'none',
+                }}>
+                  <div style={{ background:'rgba(255,255,255,.03)', padding:'10px 14px', display:'flex', alignItems:'center', gap:6, borderBottom:'1px solid rgba(255,255,255,.06)' }}>
+                    {['#ff5f57','#febc2e','#28c840'].map((c,i)=>(
+                      <span key={i} style={{ width:10, height:10, borderRadius:'50%', background:c }} />
+                    ))}
+                    <span style={{ marginLeft:10, fontSize:'.72rem', color:'#4a5568', fontFamily:'monospace' }}>neuralbot ~ live</span>
+                  </div>
+                  <div style={{ padding:'20px', fontFamily:"'Courier New',monospace", fontSize:'.79rem', lineHeight:2 }}>
+                    {[
+                      ['▶','Inicializando agente de IA...','#eef2f7'],
+                      ['▶','Conectando ao WhatsApp Business','#8a96a8'],
+                      ['✓','Conexão estabelecida','#00d4aa'],
+                      [' ',' ','transparent'],
+                      ['👤','"Qual o preço do produto X?"','#eef2f7'],
+                      ['🤖','Analisando intenção do usuário...','#8a96a8'],
+                      ['🤖','Respondendo em 0.4s ✓','#00d4aa'],
+                      [' ',' ','transparent'],
+                      ['📊','Leads qualificados hoje: 47','#8a96a8'],
+                      ['💰','Vendas fechadas pelo bot: R$ 12.480','#00d4aa'],
+                    ].map(([p,t,c],i)=>(
+                      <div key={i} style={{ display:'flex', gap:10 }}>
+                        <span style={{ color:'#00d4aa', flexShrink:0 }}>{p}</span>
+                        <span style={{ color:c }}>{t}</span>
+                      </div>
+                    ))}
+                    <div style={{ display:'flex', gap:10 }}>
+                      <span style={{ color:'#00d4aa' }}>▶</span>
+                      <span style={{ color:'#8a96a8' }}>Aguardando próxima mensagem
+                        <span style={{ display:'inline-block', width:7, height:13, background:'#00d4aa', marginLeft:3, animation:'blink 1s step-end infinite', verticalAlign:'middle' }} />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div ref={r2} style={{ opacity:v2?1:0, transform:v2?'none':'translateY(28px)', transition:'all .7s .1s ease' }}>
+                <SLabel icon="info">Quem somos</SLabel>
+                <STitle>IA que trabalha<br /><Hi>enquanto você descansa</Hi></STitle>
+                <p style={{ color:'#8a96a8', lineHeight:1.75, maxWidth:520 }}>
+                  Somos um estúdio especializado em <strong style={{color:'#eef2f7'}}>chatbots inteligentes e agentes de IA</strong>.
+                  Criamos soluções que conversam como humanos, executam tarefas reais e se integram aos
+                  sistemas que sua empresa já usa — sem ficar dependente de plataformas engessadas.
+                </p>
+                <ul style={{ listStyle:'none', marginTop:26, display:'grid', gap:13 }}>
+                  {benefits.map((b,i)=>(
+                    <li key={i} style={{ display:'flex', alignItems:'flex-start', gap:13 }}>
+                      <span style={{
+                        width:36, height:36, background:'rgba(0,212,170,.1)', border:'1px solid rgba(0,212,170,.28)',
+                        borderRadius:9, display:'flex', alignItems:'center', justifyContent:'center', color:'#00d4aa', flexShrink:0,
+                      }}>
+                        <Icon name={b.icon} size={16} color="#00d4aa" />
+                      </span>
+                      <div>
+                        <strong style={{ display:'block', fontWeight:600, marginBottom:2 }}>{b.title}</strong>
+                        <span style={{ fontSize:'.84rem', color:'#8a96a8', lineHeight:1.6 }}>{b.desc}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ SERVIÇOS ══════════════════════════════════════════════ */
+    const SVCS = [
+      { icon:'message-square', title:'Chatbot de Atendimento',     col:'#00d4aa', bg:'rgba(0,212,170,.1)',  bd:'rgba(0,212,170,.28)',  tag:'Mais popular', desc:'Responde dúvidas frequentes, envia catálogos e encaminha casos complexos para humanos — no WhatsApp, Instagram ou site.' },
+      { icon:'shopping-cart',  title:'Automação de Vendas',        col:'#3b82f6', bg:'rgba(59,130,246,.1)', bd:'rgba(59,130,246,.28)', tag:'Alto ROI',     desc:'Bot que qualifica leads, apresenta produtos, gera link de pagamento e acompanha o pedido até a entrega.' },
+      { icon:'cpu',            title:'Agente de IA Personalizado', col:'#a855f7', bg:'rgba(168,85,247,.1)', bd:'rgba(168,85,247,.28)', tag:'Avançado',     desc:'Agentes autônomos que executam fluxos complexos, tomam decisões e se integram a CRMs, ERPs e APIs externas.' },
+      { icon:'calendar',       title:'Agendamento Inteligente',    col:'#fb923c', bg:'rgba(251,146,60,.1)', bd:'rgba(251,146,60,.28)', tag:'',             desc:'Clientes consultam horários, agendam serviços e recebem lembretes automáticos — sem ninguém da sua equipe envolvido.' },
+      { icon:'users',          title:'Captação & Qualificação',    col:'#ec4899', bg:'rgba(236,72,153,.1)', bd:'rgba(236,72,153,.28)', tag:'',             desc:'Bots que identificam potenciais clientes, coletam dados e nutrem o relacionamento até o fechamento.' },
+      { icon:'bar-chart-2',    title:'Relatórios & Analytics',     col:'#06b6d4', bg:'rgba(6,182,212,.1)',  bd:'rgba(6,182,212,.28)',  tag:'',             desc:'Dashboards em tempo real com métricas de atendimento, conversão e insights para otimizar seus resultados.' },
+    ];
+
+    function SvcCard({ s, delay }) {
+      const [h, sH] = useState(false);
+      const [r, v] = useReveal(.07);
+      return (
+        <div ref={r}
+             onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}
+             style={{
+               opacity:v?1:0, transform:v?(h?'translateY(-4px)':'none'):'translateY(28px)',
+               transition:`opacity .65s ${delay}s ease, transform .3s ease, border .25s ease, background .25s ease`,
+               background: h ? '#161f2a' : '#111820',
+               border: h ? `1px solid ${s.bd}` : '1px solid rgba(255,255,255,.07)',
+               borderRadius:20, padding:28, cursor:'default',
+               boxShadow: h ? '0 12px 40px rgba(0,0,0,.4)' : 'none',
+               position:'relative', overflow:'hidden',
+             }}>
+          {s.tag && (
+            <span style={{
+              position:'absolute', top:16, right:16, fontSize:'.68rem', fontWeight:700,
+              color:s.col, background:s.bg, padding:'3px 10px', borderRadius:100,
+              border:`1px solid ${s.bd}`, letterSpacing:'.04em',
+            }}>{s.tag}</span>
+          )}
+          <div style={{
+            width:50, height:50, background:s.bg, border:`1px solid ${s.bd}`,
+            borderRadius:13, display:'flex', alignItems:'center', justifyContent:'center',
+            marginBottom:18, color:s.col,
+          }}>
+            <Icon name={s.icon} size={22} color={s.col} />
+          </div>
+          <h3 style={{ fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:'1.05rem', marginBottom:8 }}>{s.title}</h3>
+          <p style={{ fontSize:'.88rem', color:'#8a96a8', lineHeight:1.65 }}>{s.desc}</p>
+        </div>
+      );
+    }
+
+    function Services() {
+      const [r, v] = useReveal();
+      return (
+        <section id="servicos" style={{ padding:'100px 0', background:'#080b10' }}>
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px' }}>
+            <div ref={r} style={{ textAlign:'center', marginBottom:52, opacity:v?1:0, transform:v?'none':'translateY(22px)', transition:'all .6s ease' }}>
+              <SLabel icon="layers">Nossas soluções</SLabel>
+              <STitle center>Serviços feitos para <Hi>escalar seu negócio</Hi></STitle>
+              <p style={{ color:'#8a96a8', maxWidth:560, margin:'0 auto', lineHeight:1.7 }}>
+                Soluções completas de IA para cada etapa do funil — do primeiro contato até o pós-venda.
+              </p>
+            </div>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(300px,1fr))', gap:18 }}>
+              {SVCS.map((s,i) => <SvcCard key={i} s={s} delay={i*.06} />)}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ PROCESSO ══════════════════════════════════════════════ */
+    const STEPS = [
+      { n:'01', icon:'search',       t:'Diagnóstico',     d:'Entendemos seu negócio, mapeamos processos e identificamos onde a automação traz mais retorno.' },
+      { n:'02', icon:'pen-tool',     t:'Desenho da Solução', d:'Projetamos o fluxo conversacional, integrações e tom de voz alinhado à identidade da sua marca.' },
+      { n:'03', icon:'code-2',       t:'Desenvolvimento', d:'Construímos o bot com IA treinada especificamente no seu contexto e nos seus produtos/serviços.' },
+      { n:'04', icon:'rocket',       t:'Lançamento & Suporte', d:'Colocamos em produção, treinamos sua equipe e acompanhamos os primeiros 30 dias com ajustes ilimitados.' },
+    ];
+
+    function Process() {
+      const [r, v] = useReveal();
+      return (
+        <section id="processo" style={{ padding:'100px 0', background:'#0d1117' }}>
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px' }}>
+            <div ref={r} style={{ textAlign:'center', marginBottom:52, opacity:v?1:0, transform:v?'none':'translateY(22px)', transition:'all .6s ease' }}>
+              <SLabel icon="git-branch">Como funciona</SLabel>
+              <STitle center>Do <Hi>diagnóstico ao lançamento</Hi> em 4 etapas</STitle>
+              <p style={{ color:'#8a96a8', maxWidth:560, margin:'0 auto', lineHeight:1.7 }}>
+                Um processo claro, com entregas semanais e acompanhamento próximo.
+                Seu chatbot em produção em até 7 dias úteis.
+              </p>
+            </div>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(230px,1fr))', gap:18 }}>
+              {STEPS.map((s,i) => <StepCard key={i} s={s} i={i} />)}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function StepCard({ s, i }) {
+      const [h, sH] = useState(false);
+      const [r, v] = useReveal(.08);
+      return (
+        <div ref={r}
+             onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}
+             style={{
+               opacity:v?1:0, transform:v?'none':'translateY(24px)',
+               transition:`opacity .65s ${i*.08}s ease, transform .3s ease, border .25s`,
+               background:'#111820',
+               border: h ? '1px solid rgba(0,212,170,.28)' : '1px solid rgba(255,255,255,.07)',
+               borderRadius:18, padding:26, position:'relative',
+             }}>
+          <div style={{
+            fontFamily:"'Syne',sans-serif", fontWeight:800, fontSize:'2.6rem',
+            color:'transparent', WebkitTextStroke:'1px rgba(0,212,170,.35)',
+            lineHeight:1, marginBottom:14, letterSpacing:'-.03em',
+          }}>{s.n}</div>
+          <div style={{
+            width:42, height:42, background:'rgba(0,212,170,.1)', border:'1px solid rgba(0,212,170,.28)',
+            borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', marginBottom:14,
+          }}>
+            <Icon name={s.icon} size={19} color="#00d4aa" />
+          </div>
+          <h3 style={{ fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:'1.02rem', marginBottom:7 }}>{s.t}</h3>
+          <p style={{ fontSize:'.85rem', color:'#8a96a8', lineHeight:1.65 }}>{s.d}</p>
+        </div>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ DIFERENCIAIS ══════════════════════════════════════════════ */
+    const DIFFS = [
+      { icon:'zap',        title:'Entrega em 7 dias',    desc:'Seu chatbot em produção em até 7 dias úteis. Sem enrolação, sem burocracia.' },
+      { icon:'settings-2', title:'100% personalizado',   desc:'Criado sob medida para seu negócio, com sua identidade visual e processos próprios.' },
+      { icon:'headphones', title:'Suporte dedicado',     desc:'Acompanhamento pós-entrega com ajustes ilimitados nos primeiros 30 dias — sem custo extra.' },
+      { icon:'lock',       title:'Segurança & LGPD',     desc:'Soluções em total conformidade com a LGPD. Dados criptografados e hospedagem no Brasil.' },
+      { icon:'refresh-cw', title:'Evolução contínua',    desc:'A IA aprende com cada conversa e fica mais eficiente — sem custo adicional de treinamento.' },
+      { icon:'wallet',     title:'Sem mensalidade oculta',desc:'Preço justo e transparente. Você paga pelo desenvolvimento, sem taxas escondidas depois.' },
+    ];
+
+    const TESTIMONIALS = [
+      {
+        n:'Marcos Ribeiro', r:'Dono — Loja Virtual de Moda', i:'MR',
+        t:'Implantamos o chatbot e em 30 dias triplicamos os atendimentos sem contratar mais ninguém. O ROI foi absurdo.',
+      },
+      {
+        n:'Carla Mendes', r:'Gerente Comercial — Clínica Estética', i:'CM',
+        t:'O bot agenda sozinho, manda lembrete e reduziu em 80% as faltas. Minha recepcionista ficou só para o que importa.',
+      },
+      {
+        n:'Rafael Souza', r:'CEO — Imobiliária', i:'RS',
+        t:'A IA qualifica o lead, envia vídeos dos imóveis e marca visita. Fechamos 3x mais negócios pelo WhatsApp.',
+      },
+    ];
+
+    function DiffItem({ d }) {
+      const [h, sH] = useState(false);
+      return (
+        <div onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)} style={{
+          display:'flex', alignItems:'flex-start', gap:13, padding:'17px 18px',
+          background: h ? '#161f2a' : '#111820',
+          border: h ? '1px solid rgba(0,212,170,.28)' : '1px solid rgba(255,255,255,.07)',
+          borderRadius:13, transition:'all .25s',
+        }}>
+          <div style={{
+            width:40, height:40, background:'linear-gradient(135deg,#00d4aa,#3b82f6)',
+            borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0,
+            boxShadow:'0 4px 12px rgba(0,212,170,.22)',
+          }}>
+            <Icon name={d.icon} size={17} color="#040810" />
+          </div>
+          <div>
+            <div style={{ fontWeight:700, marginBottom:3 }}>{d.title}</div>
+            <div style={{ fontSize:'.84rem', color:'#8a96a8', lineHeight:1.55 }}>{d.desc}</div>
+          </div>
+        </div>
+      );
+    }
+
+    function TestimonialCard({ t, i }) {
+      const [r, v] = useReveal(.08);
+      return (
+        <div ref={r} style={{
+          opacity:v?1:0, transform:v?'none':'translateY(24px)',
+          transition:`all .65s ${i*.08}s ease`,
+          background:'#111820', border:'1px solid rgba(255,255,255,.07)',
+          borderRadius:18, padding:26,
+        }}>
+          <div style={{ color:'#fbbf24', fontSize:'.85rem', marginBottom:10 }}>★★★★★</div>
+          <p style={{ color:'#c8d0db', lineHeight:1.7, fontSize:'.94rem', fontStyle:'italic', marginBottom:20 }}>
+            "{t.t}"
+          </p>
+          <div style={{ display:'flex', alignItems:'center', gap:12, paddingTop:16, borderTop:'1px solid rgba(255,255,255,.06)' }}>
+            <div style={{
+              width:42, height:42, background:'linear-gradient(135deg,#00d4aa,#3b82f6)',
+              borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center',
+              fontFamily:"'Syne',sans-serif", fontWeight:800, fontSize:'.9rem', color:'#040810',
+            }}>{t.i}</div>
+            <div>
+              <div style={{ fontWeight:700, fontSize:'.9rem' }}>{t.n}</div>
+              <div style={{ fontSize:'.76rem', color:'#4a5568' }}>{t.r}</div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function Differentials() {
+      const [r, v] = useReveal();
+      return (
+        <section id="diferenciais" style={{ padding:'100px 0', background:'#080b10' }}>
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px' }}>
+            <div ref={r} style={{ textAlign:'center', marginBottom:52, opacity:v?1:0, transform:v?'none':'translateY(22px)', transition:'all .6s ease' }}>
+              <SLabel icon="star">Por que nos escolher</SLabel>
+              <STitle center>Resultados reais <Hi>desde o primeiro dia</Hi></STitle>
+              <p style={{ color:'#8a96a8', maxWidth:560, margin:'0 auto', lineHeight:1.7 }}>
+                Seis motivos para contratar um estúdio especializado em IA — e não uma plataforma genérica.
+              </p>
+            </div>
+
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:14, marginBottom:70 }}>
+              {DIFFS.map((d,i) => <DiffItem key={i} d={d} />)}
+            </div>
+
+            <div style={{ textAlign:'center', marginBottom:32 }}>
+              <SLabel icon="heart">Depoimentos</SLabel>
+              <STitle center>O que nossos <Hi>clientes dizem</Hi></STitle>
+            </div>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:18 }}>
+              {TESTIMONIALS.map((t,i) => <TestimonialCard key={i} t={t} i={i} />)}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ CTA BAND ══════════════════════════════════════════════ */
+    function CTABand() {
+      const [r, v] = useReveal();
+      return (
+        <section style={{ padding:'80px 0', background:'#080b10', position:'relative', overflow:'hidden' }}>
+          <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,212,170,.06) 0%, transparent 70%)', pointerEvents:'none' }} />
+          <div ref={r} style={{
+            maxWidth:760, margin:'0 auto', padding:'0 24px', textAlign:'center',
+            opacity:v?1:0, transform:v?'none':'translateY(22px)', transition:'all .65s ease', position:'relative', zIndex:1,
+          }}>
+            <div style={{
+              display:'inline-flex', alignItems:'center', gap:8, marginBottom:22,
+              background:'rgba(0,212,170,.08)', border:'1px solid rgba(0,212,170,.2)',
+              padding:'6px 16px', borderRadius:100,
+              fontSize:'.74rem', fontWeight:600, letterSpacing:'.1em', textTransform:'uppercase', color:'#00d4aa',
+            }}>
+              <span style={{ width:6, height:6, background:'#00d4aa', borderRadius:'50%', animation:'pulse 2s ease-in-out infinite' }} />
+              Análise gratuita — sem compromisso
+            </div>
+            <h2 style={{
+              fontFamily:"'Syne',sans-serif", fontWeight:800,
+              fontSize:'clamp(1.8rem,4vw,2.8rem)', lineHeight:1.1,
+              letterSpacing:'-.02em', marginBottom:16,
+            }}>
+              Seu negócio pode <Hi>faturar mais</Hi> com automação de IA
+            </h2>
+            <p style={{ color:'#8a96a8', fontSize:'1rem', lineHeight:1.75, maxWidth:560, margin:'0 auto 32px' }}>
+              Empresas que automatizam o atendimento vendem até <strong style={{color:'#eef2f7'}}>3× mais</strong> sem contratar novas pessoas.
+              Descubra como em uma conversa gratuita.
+            </p>
+            <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:12, flexWrap:'wrap' }}>
+              <BtnPri href={wpp()}>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#040810"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Quero uma análise gratuita
+              </BtnPri>
+              <BtnOut href="#faq">Ver perguntas frequentes <Icon name="arrow-right" size={14} color="#00d4aa" /></BtnOut>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ FAQ ══════════════════════════════════════════════ */
+    const FAQS = [
+      { q:'Quanto tempo leva para ter meu chatbot funcionando?', a:'Entre 5 e 7 dias úteis para projetos padrão. Projetos com integrações mais complexas (ERPs, APIs customizadas) podem levar um pouco mais, mas sempre entregamos um cronograma claro antes de iniciar.' },
+      { q:'Preciso ter WhatsApp Business ou alguma conta especial?', a:'Para WhatsApp usamos a API Oficial do WhatsApp Business (Meta), o que garante segurança e evita bloqueios. Cuidamos de todo o processo de configuração junto com você — basta ter um número de telefone disponível.' },
+      { q:'O bot substitui minha equipe de atendimento?', a:'Não. O bot assume o trabalho repetitivo (dúvidas frequentes, agendamentos, primeira triagem) e libera sua equipe para o que realmente importa: atendimento humano de qualidade em casos complexos e fechamento de vendas.' },
+      { q:'E se o bot não souber responder alguma coisa?', a:'Configuramos transferência inteligente para humanos. Quando a IA identifica que não tem confiança na resposta, direciona automaticamente para o atendente disponível — sem o cliente ficar sem resposta.' },
+      { q:'Como funciona a cobrança? Tem mensalidade?', a:'Você paga uma vez pelo desenvolvimento (à vista ou parcelado). Depois, apenas custos variáveis da plataforma (servidor e API do WhatsApp, por exemplo) — sempre transparentes e geralmente muito baixos. Nada de mensalidade obrigatória para nós.' },
+      { q:'Meus dados e dos meus clientes ficam seguros?', a:'Sim. Trabalhamos 100% em conformidade com a LGPD, com criptografia ponta-a-ponta, hospedagem em servidores no Brasil e assinamos termo de confidencialidade. Você tem total controle sobre os dados.' },
+    ];
+
+    function FAQItem({ f, i }) {
+      const [open, setOpen] = useState(false);
+      return (
+        <div style={{
+          background:'#111820', border:`1px solid ${open?'rgba(0,212,170,.28)':'rgba(255,255,255,.07)'}`,
+          borderRadius:14, overflow:'hidden', transition:'border .25s',
+        }}>
+          <button onClick={()=>setOpen(v=>!v)} style={{
+            width:'100%', padding:'18px 22px', display:'flex', alignItems:'center', justifyContent:'space-between',
+            gap:14, background:'transparent', border:'none', color:'#eef2f7', cursor:'pointer', textAlign:'left',
+          }}>
+            <span style={{ fontFamily:"'Syne',sans-serif", fontWeight:600, fontSize:'.98rem' }}>{f.q}</span>
+            <span style={{
+              width:30, height:30, borderRadius:8, background:open?'rgba(0,212,170,.12)':'rgba(255,255,255,.05)',
+              display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0,
+              transform: open ? 'rotate(45deg)' : 'none', transition:'all .25s',
+            }}>
+              <Icon name="plus" size={15} color={open?'#00d4aa':'#8a96a8'} />
+            </span>
+          </button>
+          <div style={{
+            maxHeight: open ? 300 : 0, overflow:'hidden',
+            transition:'max-height .3s ease', padding: open ? '0 22px 20px' : '0 22px',
+          }}>
+            <p style={{ color:'#8a96a8', lineHeight:1.7, fontSize:'.9rem' }}>{f.a}</p>
+          </div>
+        </div>
+      );
+    }
+
+    function FAQ() {
+      const [r, v] = useReveal();
+      return (
+        <section id="faq" style={{ padding:'100px 0', background:'#080b10' }}>
+          <div style={{ maxWidth:860, margin:'0 auto', padding:'0 24px' }}>
+            <div ref={r} style={{ textAlign:'center', marginBottom:48, opacity:v?1:0, transform:v?'none':'translateY(22px)', transition:'all .6s ease' }}>
+              <SLabel icon="help-circle">Perguntas frequentes</SLabel>
+              <STitle center>Ficou com <Hi>alguma dúvida?</Hi></STitle>
+              <p style={{ color:'#8a96a8', maxWidth:520, margin:'0 auto', lineHeight:1.7 }}>
+                As respostas que você procura sobre como a gente trabalha. Se ficar qualquer coisa, chama no WhatsApp.
+              </p>
+            </div>
+            <div style={{ display:'flex', flexDirection:'column', gap:12 }}>
+              {FAQS.map((f,i) => <FAQItem key={i} f={f} i={i} />)}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ CONTATO ══════════════════════════════════════════════ */
+    function Contact() {
+      const [r, v] = useReveal();
+      const [form, setForm] = useState({ name:'', email:'', phone:'', message:'' });
+      const [sent, setSent] = useState(false);
+
+      const set = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+
+      const submit = e => {
+        e.preventDefault();
+        const txt = `*Novo contato pelo site NeuralBot*\n\nNome: ${form.name}\nEmail: ${form.email}\nTelefone: ${form.phone||'Não informado'}\n\nMensagem:\n${form.message}`;
+        window.open(`https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(txt)}`, '_blank');
+        setSent(true);
+        setTimeout(() => { setSent(false); setForm({ name:'', email:'', phone:'', message:'' }); }, 3000);
+      };
+
+      const inp = {
+        background:'#0d1117', border:'1px solid rgba(255,255,255,.1)',
+        borderRadius:10, padding:'12px 14px', color:'#eef2f7',
+        fontFamily:"'Inter',sans-serif", fontSize:'.9rem',
+        width:'100%', outline:'none', transition:'border .2s, box-shadow .2s',
+      };
+
+      return (
+        <section id="contato" style={{ padding:'100px 0', background:'#0d1117' }}>
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px' }}>
+            <div ref={r} style={{
+              opacity:v?1:0, transform:v?'none':'translateY(28px)', transition:'all .65s ease',
+              background:'linear-gradient(180deg,#0e1520,#0a1018)', border:'1px solid rgba(255,255,255,.07)',
+              borderRadius:24, padding:'clamp(28px,5vw,60px)',
+              display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',
+              gap:'clamp(28px,5vw,60px)', position:'relative', overflow:'hidden',
+            }}>
+              <div style={{ position:'absolute', top:-80, left:-80, width:380, height:380, background:'radial-gradient(circle,rgba(0,212,170,.06) 0%,transparent 70%)', pointerEvents:'none' }} />
+              <div style={{ position:'absolute', bottom:-80, right:-80, width:380, height:380, background:'radial-gradient(circle,rgba(59,130,246,.05) 0%,transparent 70%)', pointerEvents:'none' }} />
+
+              <div style={{ position:'relative', zIndex:1 }}>
+                <SLabel icon="phone">Vamos conversar</SLabel>
+                <STitle>Pronto para<br /><Hi>automatizar seu negócio?</Hi></STitle>
+                <p style={{ color:'#8a96a8', lineHeight:1.75, marginBottom:26 }}>
+                  Me chame no WhatsApp agora. Faço uma análise <strong style={{color:'#eef2f7'}}>gratuita</strong> do
+                  potencial de automação do seu negócio e entrego um plano sob medida em até 24h.
+                </p>
+                <a href={wpp()} target="_blank" rel="noopener noreferrer"
+                   style={{
+                     display:'inline-flex', alignItems:'center', gap:12,
+                     background:'#25D366', color:'#fff',
+                     fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:'.95rem',
+                     padding:'15px 26px', borderRadius:15, transition:'all .25s',
+                     boxShadow:'0 4px 14px rgba(37,211,102,.22)',
+                   }}
+                   onMouseEnter={e=>{ e.currentTarget.style.background='#1ebe5d'; e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 10px 32px rgba(37,211,102,.35)'; }}
+                   onMouseLeave={e=>{ e.currentTarget.style.background='#25D366'; e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='0 4px 14px rgba(37,211,102,.22)'; }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Chamar no WhatsApp agora
+                </a>
+
+                <div style={{ marginTop:26, display:'flex', flexDirection:'column', gap:9 }}>
+                  {['Análise gratuita do seu negócio','Sem compromisso ou contrato','Proposta personalizada em até 24h','Atendimento humano, direto comigo'].map((t,i)=>(
+                    <div key={i} style={{ display:'flex', alignItems:'center', gap:8, fontSize:'.83rem', color:'#8a96a8' }}>
+                      <Icon name="check-circle-2" size={14} color="#00d4aa" /> {t}
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ marginTop:28, paddingTop:22, borderTop:'1px solid rgba(255,255,255,.07)', display:'grid', gap:10 }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:10, fontSize:'.85rem', color:'#c8d0db' }}>
+                    <Icon name="phone" size={14} color="#00d4aa" /> {CFG.whatsappDisplay}
+                  </div>
+                  <div style={{ display:'flex', alignItems:'center', gap:10, fontSize:'.85rem', color:'#c8d0db' }}>
+                    <Icon name="mail" size={14} color="#00d4aa" /> {CFG.email}
+                  </div>
+                  <div style={{ display:'flex', alignItems:'center', gap:10, fontSize:'.85rem', color:'#c8d0db' }}>
+                    <Icon name="map-pin" size={14} color="#00d4aa" /> {CFG.city}
+                  </div>
+                  <div style={{ display:'flex', alignItems:'center', gap:10, fontSize:'.85rem', color:'#c8d0db' }}>
+                    <Icon name="clock" size={14} color="#00d4aa" /> {CFG.hours}
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ position:'relative', zIndex:1 }}>
+                <h3 style={{ fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:'1.15rem', marginBottom:5 }}>
+                  Prefere deixar uma mensagem?
+                </h3>
+                <p style={{ fontSize:'.85rem', color:'#8a96a8', marginBottom:22 }}>
+                  Preencha abaixo e respondo em até 1 hora útil.
+                </p>
+                <form onSubmit={submit} style={{ display:'flex', flexDirection:'column', gap:14 }}>
+                  {[
+                    { id:'name',  label:'Nome completo',      type:'text',  ph:'João Silva',       req:true  },
+                    { id:'email', label:'E-mail',             type:'email', ph:'joao@empresa.com', req:true  },
+                    { id:'phone', label:'WhatsApp (opcional)',type:'tel',   ph:'(11) 99999-9999',  req:false },
+                  ].map(f=>(
+                    <div key={f.id}>
+                      <label style={{ display:'block', fontSize:'.8rem', fontWeight:500, color:'#8a96a8', marginBottom:5 }}>{f.label}</label>
+                      <input type={f.type} name={f.id} value={form[f.id]} onChange={set} required={f.req}
+                             placeholder={f.ph} style={inp}
+                             onFocus={e=>{ e.target.style.borderColor='#00d4aa'; e.target.style.boxShadow='0 0 0 3px rgba(0,212,170,.14)'; }}
+                             onBlur={e=>{ e.target.style.borderColor='rgba(255,255,255,.1)'; e.target.style.boxShadow='none'; }} />
+                    </div>
+                  ))}
+                  <div>
+                    <label style={{ display:'block', fontSize:'.8rem', fontWeight:500, color:'#8a96a8', marginBottom:5 }}>Como podemos te ajudar?</label>
+                    <textarea name="message" value={form.message} onChange={set} required
+                              placeholder="Conte sobre seu negócio e o que quer automatizar..."
+                              style={{ ...inp, resize:'vertical', minHeight:100 }}
+                              onFocus={e=>{ e.target.style.borderColor='#00d4aa'; e.target.style.boxShadow='0 0 0 3px rgba(0,212,170,.14)'; }}
+                              onBlur={e=>{ e.target.style.borderColor='rgba(255,255,255,.1)'; e.target.style.boxShadow='none'; }} />
+                  </div>
+                  <button type="submit" style={{
+                    display:'flex', alignItems:'center', justifyContent:'center', gap:8,
+                    background: sent ? '#22c55e' : 'linear-gradient(135deg,#00d4aa,#3b82f6)',
+                    color:'#040810', fontFamily:"'Syne',sans-serif", fontWeight:700,
+                    fontSize:'.92rem', padding:'14px', borderRadius:12,
+                    border:'none', cursor:'pointer', transition:'all .25s',
+                  }}
+                  onMouseEnter={e=>{ if(!sent){ e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 10px 28px rgba(0,212,170,.28)'; }}}
+                  onMouseLeave={e=>{ e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='none'; }}>
+                    <Icon name={sent?'check':'send'} size={15} color="#040810" />
+                    {sent ? 'Enviado com sucesso!' : 'Enviar mensagem'}
+                  </button>
+                  <p style={{ fontSize:'.72rem', color:'#4a5568', textAlign:'center' }}>
+                    🔒 Seus dados são protegidos. Não compartilhamos com terceiros.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════ */
+    function Footer() {
+      const socials = [
+        { k:'ig',  icon:'instagram',      href:'https://instagram.com',  label:'Instagram' },
+        { k:'li',  icon:'linkedin',       href:'https://linkedin.com',   label:'LinkedIn'  },
+        { k:'yt',  icon:'youtube',        href:'https://youtube.com',    label:'YouTube'   },
+        { k:'wpp', icon:'message-circle', href:wpp(),                    label:'WhatsApp'  },
+      ];
+      const [hs, sHs] = useState(null);
+
+      return (
+        <footer style={{ borderTop:'1px solid rgba(255,255,255,.07)', background:'#080b10', padding:'60px 0 28px' }}>
+          <div style={{ maxWidth:1180, margin:'0 auto', padding:'0 24px' }}>
+
+            <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr 1fr 1fr', gap:40, paddingBottom:44, flexWrap:'wrap' }} className="footer-grid">
+              <div>
+                <div style={{ fontFamily:"'Syne',sans-serif", fontSize:'1.18rem', fontWeight:800, display:'flex', alignItems:'center', gap:9, marginBottom:13 }}>
+                  <span style={{ width:30, height:30, background:'linear-gradient(135deg,#00d4aa,#3b82f6)', borderRadius:9, display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    <Icon name="bot" size={15} color="#040810" />
+                  </span>
+                  {CFG.name}
+                </div>
+                <p style={{ fontSize:'.85rem', color:'#8a96a8', lineHeight:1.7, maxWidth:280, marginBottom:18 }}>
+                  Transformando negócios com chatbots e agentes de IA sob medida. Tecnologia a serviço do seu crescimento.
+                </p>
+                <div style={{ display:'flex', gap:8 }}>
+                  {socials.map(s=>(
+                    <a key={s.k} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                       style={{
+                         width:36, height:36,
+                         background: hs===s.k ? 'rgba(0,212,170,.1)' : '#111820',
+                         border: hs===s.k ? '1px solid rgba(0,212,170,.28)' : '1px solid rgba(255,255,255,.07)',
+                         borderRadius:9, display:'flex', alignItems:'center', justifyContent:'center',
+                         color: hs===s.k ? '#00d4aa' : '#8a96a8', transition:'all .2s',
+                       }}
+                       onMouseEnter={()=>sHs(s.k)} onMouseLeave={()=>sHs(null)}>
+                      <Icon name={s.icon} size={15} color={hs===s.k?'#00d4aa':'#8a96a8'} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p style={{ fontSize:'.72rem', fontFamily:"'Syne',sans-serif", fontWeight:700, letterSpacing:'.1em', textTransform:'uppercase', color:'#4a5568', marginBottom:14 }}>Navegação</p>
+                {[['Sobre','sobre'],['Serviços','servicos'],['Como Funciona','processo'],['Diferenciais','diferenciais'],['FAQ','faq']].map(([l,h],i)=>(
+                  <FootLink key={i} href={`#${h}`}>{l}</FootLink>
+                ))}
+              </div>
+
+              <div>
+                <p style={{ fontSize:'.72rem', fontFamily:"'Syne',sans-serif", fontWeight:700, letterSpacing:'.1em', textTransform:'uppercase', color:'#4a5568', marginBottom:14 }}>Serviços</p>
+                <FootLink href="#servicos">Chatbot WhatsApp</FootLink>
+                <FootLink href="#servicos">Automação de Vendas</FootLink>
+                <FootLink href="#servicos">Agentes de IA</FootLink>
+                <FootLink href="#servicos">Agendamentos</FootLink>
+              </div>
+
+              <div>
+                <p style={{ fontSize:'.72rem', fontFamily:"'Syne',sans-serif", fontWeight:700, letterSpacing:'.1em', textTransform:'uppercase', color:'#4a5568', marginBottom:14 }}>Contato</p>
+                <FootLink href={wpp()} ext>{CFG.whatsappDisplay}</FootLink>
+                <FootLink href={`mailto:${CFG.email}`} ext>{CFG.email}</FootLink>
+                <FootLink href="#">Política de Privacidade</FootLink>
+                <FootLink href="#">Termos de Uso</FootLink>
+              </div>
+            </div>
+
+            <div style={{ height:1, background:'rgba(255,255,255,.07)', marginBottom:24 }} />
+
+            <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:12 }}>
+              <p style={{ fontSize:'.78rem', color:'#4a5568' }}>
+                © 2026 <span style={{ color:'#00d4aa' }}>{CFG.name}</span>. Todos os direitos reservados. Feito com ❤️ no Brasil.
+              </p>
+              <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}
+                      aria-label="Voltar ao topo"
+                      style={{
+                        width:34, height:34, background:'#111820',
+                        border:'1px solid rgba(255,255,255,.07)', borderRadius:9,
+                        display:'flex', alignItems:'center', justifyContent:'center',
+                        color:'#8a96a8', cursor:'pointer', transition:'all .2s',
+                      }}
+                      onMouseEnter={e=>{ e.currentTarget.style.color='#00d4aa'; e.currentTarget.style.borderColor='rgba(0,212,170,.28)'; }}
+                      onMouseLeave={e=>{ e.currentTarget.style.color='#8a96a8'; e.currentTarget.style.borderColor='rgba(255,255,255,.07)'; }}>
+                <Icon name="chevron-up" size={15} />
+              </button>
+            </div>
+          </div>
+
+          <style>{`
+            @media(max-width:768px){
+              .footer-grid{ grid-template-columns: 1fr 1fr !important; }
+            }
+            @media(max-width:480px){
+              .footer-grid{ grid-template-columns: 1fr !important; }
+            }
+          `}</style>
+        </footer>
+      );
+    }
+
+    function FootLink({ href, children, ext }) {
+      const [h, sH] = useState(false);
+      return (
+        <a href={href} target={ext?'_blank':undefined} rel={ext?'noopener noreferrer':undefined}
+           style={{ display:'block', fontSize:'.86rem', color: h?'#00d4aa':'#8a96a8', padding:'5px 0', transition:'color .2s' }}
+           onMouseEnter={()=>sH(true)} onMouseLeave={()=>sH(false)}>
+          {children}
+        </a>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ FAB WHATSAPP ══════════════════════════════════════════════ */
+    function FabWhatsApp() {
+      const [show, setShow] = useState(false);
+      useEffect(() => {
+        const fn = () => setShow(window.scrollY > 500);
+        window.addEventListener('scroll', fn, { passive:true });
+        return () => window.removeEventListener('scroll', fn);
+      }, []);
+      return (
+        <a href={wpp()} target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp"
+           style={{
+             position:'fixed', bottom:24, right:24, zIndex:200,
+             width:60, height:60, borderRadius:'50%', background:'#25D366',
+             display:'flex', alignItems:'center', justifyContent:'center',
+             boxShadow:'0 10px 30px rgba(37,211,102,.45)',
+             transform: show ? 'scale(1)' : 'scale(0)',
+             opacity: show ? 1 : 0,
+             transition:'transform .3s ease, opacity .3s ease',
+           }}>
+          <span style={{
+            position:'absolute', inset:0, borderRadius:'50%', background:'#25D366',
+            animation:'pulseRing 2s ease-out infinite', opacity:.6, zIndex:-1,
+          }} />
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+      );
+    }
+
+    /* ══════════════════════════════════════════════ APP ══════════════════════════════════════════════ */
+    function App() {
+      return (
+        <>
+          <Navbar />
+          <main>
+            <Hero />
+            <Integrations />
+            <About />
+            <Services />
+            <Process />
+            <Differentials />
+            <CTABand />
+            <FAQ />
+            <Contact />
+          </main>
+          <Footer />
+          <FabWhatsApp />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
